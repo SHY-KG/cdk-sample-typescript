@@ -13,6 +13,9 @@ export class HitCounter extends cdk.Construct {
     constructor(scope: cdk.Construct, id: string, props: HitCounterProps) {
         super(scope, id);
 
+        const env: string = this.node.tryGetContext("env")
+        const context = this.node.tryGetContext(env)
+
         const table = new dynamodb.Table(this, 'Hits', {
             partitionKey: { 
                 name: 'path', type: dynamodb.AttributeType.STRING 
