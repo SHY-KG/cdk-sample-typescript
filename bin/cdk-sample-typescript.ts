@@ -6,12 +6,12 @@ import { VpcStack } from '../lib/vpc-stack';
 
 const app = new cdk.App();
 
-const env = app.node.tryGetContext("env")
-const context = app.node.tryGetContext(env)
+const env = app.node.tryGetContext('env');
+const context = app.node.tryGetContext(env);
 
 new CdkSampleTypescriptStack(app, 'CdkSampleTypescriptStack', {
-    env: { "account": context["aws_account"], "region": context["region"]}
+  env: { account: context['aws_account'], region: context['region'] },
 });
 new VpcStack(app, 'VpcStack', {
-    env: { "account": context["aws_account"], "region": context["region"] }
+  env: { account: context['aws_account'], region: context['region'] },
 });

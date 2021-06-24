@@ -10,16 +10,15 @@ export class CdkSampleTypescriptStack extends cdk.Stack {
     const hello = new lambda.Function(this, 'HelloHandler', {
       runtime: lambda.Runtime.NODEJS_12_X,
       code: lambda.Code.fromAsset('lambda'),
-      handler: 'hello.handler'
-    })
+      handler: 'hello.handler',
+    });
 
     const helloWithCounter = new HitCounter(this, 'HelloHitCounter', {
-      downstream: hello
-    })
+      downstream: hello,
+    });
 
     new apigw.LambdaRestApi(this, 'Endpoint', {
-      handler: helloWithCounter.handler
+      handler: helloWithCounter.handler,
     });
-    
   }
 }
